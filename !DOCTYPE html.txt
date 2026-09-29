@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>AI Fitness Plan</title>
+    <style>
+        body {
+            font-family: Arial;
+            background: #f2f2f2;
+            text-align: center;
+            padding: 30px;
+        }
+
+        .box {
+            background: white;
+            max-width: 450px;
+            margin: auto;
+            padding: 25px;
+            border-radius: 15px;
+        }
+
+        input, select, button {
+            width: 90%;
+            padding: 12px;
+            margin: 8px;
+            border-radius: 8px;
+            border: 1px solid #ccc;
+        }
+
+        button {
+            background: #222;
+            color: white;
+            cursor: pointer;
+        }
+
+        #result {
+            margin-top: 20px;
+            text-align: left;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="box">
+    <h1>🏋️ AI Fitness Plan</h1>
+
+    <input type="number" id="age" placeholder="Age">
+    <input type="number" id="weight" placeholder="Weight (kg)">
+    <input type="number" id="height" placeholder="Height (cm)">
+
+    <select id="goal">
+        <option value="weightloss">Weight Loss</option>
+        <option value="muscle">Muscle Gain</option>
+        <option value="fitness">General Fitness</option>
+    </select>
+
+    <button onclick="generatePlan()">Generate Plan</button>
+
+    <div id="result"></div>
+</div>
+
+<script>
+function generatePlan() {
+
+    let age = document.getElementById("age").value;
+    let weight = document.getElementById("weight").value;
+    let height = document.getElementById("height").value;
+    let goal = document.getElementById("goal").value;
+
+    if (!age || !weight || !height) {
+        alert("Please enter all details");
+        return;
+    }
+
+    let plan = "";
+
+    if (goal === "weightloss") {
+        plan = `
+            <h2>🔥 Weight Loss Plan</h2>
+            <ul>
+                <li>Monday: Walking + Squats</li>
+                <li>Tuesday: Cardio</li>
+                <li>Wednesday: Rest</li>
+                <li>Thursday: Jogging + Push-ups</li>
+                <li>Friday: Full Body Workout</li>
+                <li>Saturday: Walking</li>
+                <li>Sunday: Rest</li>
+            </ul>
+        `;
+    }
+
+    else if (goal === "muscle") {
+        plan = `
+            <h2>💪 Muscle Gain Plan</h2>
+            <ul>
+                <li>Monday: Chest + Triceps</li>
+                <li>Tuesday: Back + Biceps</li>
+                <li>Wednesday: Rest</li>
+                <li>Thursday: Legs</li>
+                <li>Friday: Shoulders + Arms</li>
+                <li>Saturday: Full Body</li>
+                <li>Sunday: Rest</li>
+            </ul>
+        `;
+    }
+
+    else {
+        plan = `
+            <h2>🏃 General Fitness Plan</h2>
+            <ul>
+                <li>Monday: Full Body Workout</li>
+                <li>Tuesday: Walking</li>
+                <li>Wednesday: Cardio</li>
+                <li>Thursday: Rest</li>
+                <li>Friday: Full Body Workout</li>
+                <li>Saturday: Walking + Stretching</li>
+                <li>Sunday: Rest</li>
+            </ul>
+        `;
+    }
+
+    document.getElementById("result").innerHTML = plan;
+}
+</script>
+
+</body>
+</html>
